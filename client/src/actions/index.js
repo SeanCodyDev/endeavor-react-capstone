@@ -1,4 +1,6 @@
 var moment = require('moment');
+import {API_BASE_URL} from '../config';
+import {normalizeResponseErrors} from './utils';
 
 export const ADD_LIST = 'ADD_LIST';
 export const addList = title => ({
@@ -14,24 +16,48 @@ export const addTask = (text, listIndex, dayIndex) => ({
     dayIndex
 });
 
+export const saveTask = (text, listIndex, dayIndex, date) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    console.log(text, date);
+    return fetch(`${API_BASE_URL}/addTask`, {
+        method: 'POST',
+        body: JSON.stringify({title: text, listIndex: listIndex, date: date}),
+        headers: {
+            // Provide our auth token as credentials
+            Authorization: `Bearer ${authToken}`,
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(({data}) => dispatch(addTask(text, listIndex, dayIndex)))
+        .catch(err => {
+            console.log(err);
+            // dispatch(fetchProtectedDataError(err));
+        });
+};
+
 export const ADD_DAY = 'ADD_DAY';
 export const addDay = (title) => ({
     type: ADD_DAY,
     day: {
         title: title,
         lists: [{
-            title: 'MORNING2',
+            title: 'MORNING',
             tasks: []
         }, {
-            title: 'AFTERNOON2',
+            title: 'AFTERNOON',
             tasks: []
         }, {
-            title: 'NIGHT2',
+            title: 'NIGHT',
             tasks: []
         }]
     }
  
 });
+
+
 
 export const COMPLETE_TASK = 'COMPLETE_TASK';
 export const completeTask = (dayIndex, listIndex, taskIndex) => ({

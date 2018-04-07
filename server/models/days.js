@@ -5,7 +5,11 @@ const DaySchema = new Schema({
     userId: String,
     title: String,
     date: String,
-    lists: Array
+    lists: {
+    	type: Array,
+    	title: String,
+    	tasks: Array
+    }
 });
 
 module.exports = mongoose.model('Day', DaySchema);

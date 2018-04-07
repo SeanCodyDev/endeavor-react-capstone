@@ -26,6 +26,10 @@ router.post('/refresh', passport.authenticate('jwt', {session: false}), AuthCont
 //Add Day
 router.post('/addDay', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.addDay);
 
+//Add Task
+router.post('/addTask', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.addTask);
+
+
 
 
 module.exports = {router, basicStrategy, jwtStrategy};
