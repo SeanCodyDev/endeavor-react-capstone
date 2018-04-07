@@ -1,28 +1,49 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setCurrentUser, setAuthToken} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
+import styled from "styled-components";
+import Title from './title';
+import Button from './button';
+import Navbar from './navbar';
 
 export class HeaderBar extends React.Component {
+
     logOut() {
         this.props.dispatch(setCurrentUser(null));
         this.props.dispatch(setAuthToken(null));
         clearAuthToken();
     }
 
+
     render() {
+
+    const Header = styled.div`
+    background-color: #FFFFFF;
+    width: 100%;
+    justify-content: space-between;
+    display: block;
+    height: auto;
+    padding-bottom: 0;
+    overflow: visible;
+    
+    `;
+
         // Only render the log out button if we are logged in
         let logOutButton;
         if (this.props.loggedIn) {
             logOutButton = (
-                <button onClick={() => this.logOut()}>Log out</button>
+                <Button onClick={() => this.logOut()}>Log out</Button>
             );
         }
         return (
-            <div className="header-bar">
-                <h1>Foo App</h1>
+            <Header className="header-bar">
+                <Link to="/">
+                    <Title>Endeavor</Title>
+                </Link>
                 {logOutButton}
-            </div>
+            </Header>
         );
     }
 }

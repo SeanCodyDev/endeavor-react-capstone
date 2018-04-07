@@ -23,11 +23,14 @@ export class Dashboard extends React.Component {
                 <div className="dashboard-username">
                     Email: {this.props.email}
                 </div>
+                
+                {/* ===== OBSOLETE =====
                 <div className="dashboard-protected-data">
                     Protected data: {this.props.protectedData}
                 </div>
                 <br />
                 <Link to="/add">Add Entry</Link>
+                */}
             </div>
         );
     }

@@ -20,7 +20,9 @@
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
-    "passport-jwt": "^2.2.1"
+    "passport-jwt": "^2.2.1",
+    "react-slick": "^0.23.1",
+    "styled-components": "^3.2.5"
   },
   "devDependencies": {
     "chai": "^4.0.1",

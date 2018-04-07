@@ -9,9 +9,10 @@ const router = express.Router();
 
 const jsonParser = bodyParser.json();
 
-const EntryController = require('./entries');
 const UsersController = require('./users');
 const AuthController = require('./auth');
+const DayController = require('./days');
+
 
 //Register User
 router.post('/register', jsonParser, UsersController.register);
@@ -22,7 +23,9 @@ router.post('/login', passport.authenticate('basic', {session: false}), AuthCont
 //Refresh Token
 router.post('/refresh', passport.authenticate('jwt', {session: false}), AuthController.refresh);
 
-//Add Entry
-router.post('/add', [passport.authenticate('jwt', {session: false}), jsonParser],UsersController.addEntry);
+//Add Day
+router.post('/addDay', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.addDay);
+
+
 
 module.exports = {router, basicStrategy, jwtStrategy};

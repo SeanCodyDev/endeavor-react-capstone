@@ -5,12 +5,15 @@ import {loadAuthToken} from './local-storage';
 import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
 import {setAuthToken} from './actions/auth';
+import {endeavorReducer} from './reducers';
 
 const store = createStore(
     combineReducers({
         form: formReducer,
         auth: authReducer,
-        protectedData: protectedDataReducer
+        protectedData: protectedDataReducer,
+        endeavor: endeavorReducer
+
     }),
     applyMiddleware(thunk)
 );

@@ -8,6 +8,8 @@ import Dashboard from './dashboard';
 import Add from './Add';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
+import DynamicSlides from './dynamic-slides';
+
 
 export class App extends React.Component {
     componentDidMount() {
@@ -48,9 +50,11 @@ export class App extends React.Component {
     }
 
     render() {
+
         return (
             <div className="app">
                 <HeaderBar />
+                <DynamicSlides />
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/register" component={RegistrationPage} />

@@ -4,11 +4,11 @@ import axios from 'axios';
 import {API_BASE_URL} from '../config';
 
 
-export const sendEntry = (entry) => (dispatch, getState) => {
+export const sendDay = (entry) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     console.log(authToken);
     console.log(entry);
-    return fetch(`${API_BASE_URL}/add`, {
+    return fetch(`${API_BASE_URL}/addDay`, {
         method: 'POST',
         body: JSON.stringify(entry),
         headers: {
