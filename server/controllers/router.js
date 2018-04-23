@@ -29,6 +29,9 @@ router.post('/addDay', [passport.authenticate('jwt', {session: false}), jsonPars
 //Add Task
 router.post('/addTask', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.addTask);
 
+//Delete Task
+router.post('/deleteTask', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.deleteTask);
+
 
 
 

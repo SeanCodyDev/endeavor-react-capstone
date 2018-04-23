@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import List from './list';
 
-import {addList, addDay, addTask, completeTask, deleteTask, editTask, updateTask, saveTask} from '../actions';
+import {addList, addDay, addTask, completeTask, deleteTask, editTask, updateTask, saveTask, eraseTask} from '../actions';
 
 export class Day extends React.Component {
     addList(title) {
@@ -24,7 +24,7 @@ export class Day extends React.Component {
 
     deleteTask(listIndex, taskIndex) {
         console.log(this.props.index);
-        this.props.dispatch(deleteTask(this.props.index, listIndex, taskIndex))
+        this.props.dispatch(eraseTask(this.props.index, listIndex, taskIndex))
     }
 
     editTask(listIndex, taskIndex) {

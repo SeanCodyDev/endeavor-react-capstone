@@ -75,6 +75,28 @@ export const deleteTask = (dayIndex, listIndex, taskIndex) => ({
     taskIndex
 })
 
+export const eraseTask = (dayIndex, listIndex, taskIndex) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    console.log('eraseTask called');
+    return fetch(`${API_BASE_URL}/deleteTask`, {
+        method: 'POST',
+        body: JSON.stringify({listIndex: listIndex, dayIndex: dayIndex, taskIndex: taskIndex}),
+        headers: {
+            // Provide our auth token as credentials
+            Authorization: `Bearer ${authToken}`,
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(({data}) => dispatch(deleteTask(dayIndex, listIndex, taskIndex)))
+        .catch(err => {
+            console.log(err);
+            // dispatch(fetchProtectedDataError(err));
+        });
+};
+
 export const EDIT_TASK = 'EDIT_TASK';
 export const editTask = (dayIndex, listIndex, taskIndex) => ({
     type: EDIT_TASK,
