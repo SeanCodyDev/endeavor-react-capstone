@@ -16,12 +16,14 @@ export const addTask = (text, listIndex, dayIndex) => ({
     dayIndex
 });
 
+//id needs to be passed as a param on next line and included in the body on line 26 {id: id}
+//but first it needs to be passed to the days that are displayed
 export const saveTask = (text, listIndex, dayIndex, date) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     console.log(text, date);
     return fetch(`${API_BASE_URL}/addTask`, {
         method: 'POST',
-        body: JSON.stringify({title: text, listIndex: listIndex, date: date}),
+        body: JSON.stringify({text: text, listIndex: listIndex, date: date}),
         headers: {
             // Provide our auth token as credentials
             Authorization: `Bearer ${authToken}`,
@@ -123,6 +125,29 @@ export const getCalendar = (props, num, period) => {
     days: createArrayOfDays(props.startOfCurrentWeek, props.data),
     });
 }
+
+export const getDays = (dayIndex, listIndex, taskIndex) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    console.log('eraseTask called');
+    return fetch(`${API_BASE_URL}/deleteTask`, {
+        method: 'POST',
+        body: JSON.stringify({listIndex: listIndex, dayIndex: dayIndex, taskIndex: taskIndex}),
+        headers: {
+            // Provide our auth token as credentials
+            Authorization: `Bearer ${authToken}`,
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(({data}) => dispatch(deleteTask(dayIndex, listIndex, taskIndex)))
+        .catch(err => {
+            console.log(err);
+            // dispatch(fetchProtectedDataError(err));
+        });
+};
+
 
 
 function createArrayOfDays(startOfCurrentWeek, daysArray){

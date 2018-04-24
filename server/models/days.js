@@ -2,12 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const DaySchema = new Schema({
-    userId: String,
-    title: String,
+    user: {
+    	type: Object,
+    	email: String,
+    	id: String,
+    },
     date: String,
     lists: {
     	type: Array,
-    	title: String,
+    	index: Number,
     	tasks: Array
     }
 });

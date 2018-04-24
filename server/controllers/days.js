@@ -12,24 +12,23 @@ exports.addDay = function(req, res, next) {
     });
 };
 
-//Add Tasks to existing days
+//Add Tasks to new or existing days
 exports.addTask = function(req, res, next) {
-    console.log('addTask called', req.body, req.params, req.user);
+    console.log('addTask called', req.body, req.user);
     let id = req.body.id || null;
-    // Day.findOneAndUpdate(
-    //     { _id: id },
-    //     { title: "updated"},
-    //     { upsert: true, new: true, setDefaultsOnInsert: true },
-    //         function(error, result) {
-    //             console.log(error, result);
-    //         }
-
-    // )
+    console.log("id:", id);
 
 // Setup stuff
-var query = { _id: "5addf83215301b18a78e4dee" },
-    update = { title: "foobar"},
+var pushObj = {};
+//dynamically set field name
+pushObj[`lists.${req.body.listIndex}`] = req.body.text;
+var query = { _id: id},
+    update = { $push: pushObj},
     options = { upsert: false };
+
+
+const newDayUpdates = Object.assign({user: req.user}, req.body);
+newDayUpdates[`lists.${req.body.listIndex}`] = req.body.text;
 
 // Find the document
 Day.findOneAndUpdate(query, update, options, function(error, result) {
@@ -37,7 +36,10 @@ Day.findOneAndUpdate(query, update, options, function(error, result) {
         // If the document doesn't exist
         if (!result) {
             // Create it
-            result = new Day(req.body);
+            result = new Day(newDayUpdates);
+            //push task
+            let listNumber = req.body.listIndex;
+
         }
         // Save the document
         result.save(function(error) {
