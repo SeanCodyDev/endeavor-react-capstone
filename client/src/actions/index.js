@@ -18,12 +18,12 @@ export const addTask = (text, listIndex, dayIndex) => ({
 
 //id needs to be passed as a param on next line and included in the body on line 26 {id: id}
 //but first it needs to be passed to the days that are displayed
-export const saveTask = (text, listIndex, dayIndex, date) => (dispatch, getState) => {
+export const saveTask = (text, listIndex, dayIndex, date, id) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     console.log(text, date);
     return fetch(`${API_BASE_URL}/addTask`, {
         method: 'POST',
-        body: JSON.stringify({text: text, listIndex: listIndex, date: date}),
+        body: JSON.stringify({text: text, listIndex: listIndex, date: date, id: id}),
         headers: {
             // Provide our auth token as credentials
             Authorization: `Bearer ${authToken}`,
@@ -117,21 +117,21 @@ export const updateTask = (text, dayIndex, listIndex, taskIndex) => ({
 })
 
 export const GET_CALENDAR = 'GET_CALENDAR';
-export const getCalendar = (props, num, period) => {
-    // console.log(props);
+export const getCalendar = (days, props, num, period) => {
+    console.log("getCalendar:", days);
+    console.log('props', props);
     props.startOfCurrentWeek.add(num, period).startOf('week');
     return ({
     type: GET_CALENDAR,
-    days: createArrayOfDays(props.startOfCurrentWeek, props.data),
+    days: createArrayOfDays(props.startOfCurrentWeek, days),
     });
 }
 
-export const getDays = (dayIndex, listIndex, taskIndex) => (dispatch, getState) => {
+export const getDays = (props, num, period) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
-    console.log('eraseTask called');
-    return fetch(`${API_BASE_URL}/deleteTask`, {
+    return fetch(`${API_BASE_URL}/getDays`, {
         method: 'POST',
-        body: JSON.stringify({listIndex: listIndex, dayIndex: dayIndex, taskIndex: taskIndex}),
+        body: JSON.stringify({props: props, num: num, period: period}),
         headers: {
             // Provide our auth token as credentials
             Authorization: `Bearer ${authToken}`,
@@ -141,7 +141,7 @@ export const getDays = (dayIndex, listIndex, taskIndex) => (dispatch, getState) 
     })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
-        .then(({data}) => dispatch(deleteTask(dayIndex, listIndex, taskIndex)))
+        .then((data) => dispatch(getCalendar(data, props, num, period)))
         .catch(err => {
             console.log(err);
             // dispatch(fetchProtectedDataError(err));
@@ -151,19 +151,24 @@ export const getDays = (dayIndex, listIndex, taskIndex) => (dispatch, getState) 
 
 
 function createArrayOfDays(startOfCurrentWeek, daysArray){
-
+if (daysArray.length === 0) {
+    daysArray.push({date: null, lists: []});
+}
 const newDaysArray = { days: daysArray}
-const finalDaysArray = {days:[]}; 
+const finalDaysArray = {days:[]};
+console.log(newDaysArray);
+
+ 
 
 for (let i=0; i<7; i++) {
     for (let k=0; k<newDaysArray.days.length; k++) {
+        console.log(moment(newDaysArray.days[k].date).format("MMM Do YY"));
         // console.log(newDaysArray.days[k].date.format("MMM Do YY"), moment(startOfCurrentWeek).add(i, 'days').format("MMM Do YY"),newDaysArray.days[k].date.format("MMM Do YY") === moment(startOfCurrentWeek).add(i, 'days').format("MMM Do YY") )
-        if (newDaysArray.days[k].date.format("MMM Do YY") === moment(startOfCurrentWeek).add(i, 'days').format("MMM Do YY")) {
+        if (moment(newDaysArray.days[k].date).format("MMM Do YY") === moment(startOfCurrentWeek).add(i, 'days').format("MMM Do YY")) {
             finalDaysArray.days[i] = newDaysArray.days[k];
             break
         } else {
             finalDaysArray.days[i] = {
-                title: moment(startOfCurrentWeek).add(i, 'days').format("MMM Do YY"),
                 date: moment(startOfCurrentWeek).add(i, 'days'),
                 lists: [{
                     title: 'MORNING',
@@ -182,6 +187,6 @@ for (let i=0; i<7; i++) {
 }
 
 // console.log('newDaysArray:', newDaysArray)
-// console.log('finalDaysArray:', finalDaysArray)
+console.log('finalDaysArray:', finalDaysArray)
 return finalDaysArray.days;
 }

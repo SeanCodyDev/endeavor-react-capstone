@@ -5,146 +5,143 @@ const initialState = {
     dateDisplayed: moment(),
     startOfCurrentWeek: moment().startOf('week'),
     days: [],
-    data: [{
-        title: moment().add(0, 'days').format("MMM Do YY"),
-        date: moment().add(0, 'days'),
-        lists: [{
-            title: 'MORNING',
-            tasks: [{
-                text: 'Review Code',
-                completed: false,
-                editing: false
-            }, {
-                text: 'Email Accountant',
-                completed: false,
-                editing: false
-            }]
-        }, {
-            title: 'AFTERNOON',
-            tasks: [{
-                text: 'Book Flights',
-                completed: false,
-                editing: false
-            }, {
-                text: 'Plan Event',
-                completed: false,
-                editing: false
-            }]
-        }, {
-            title: 'NIGHT',
-            tasks: [{
-                text: 'Clean Dishes',
-                completed: false,
-                editing: false
-            }]
-        }]
-    },
-    {
-        title: moment().add(-20, 'days').format("MMM Do YY"),
-        date: moment().add(-20, 'days'),
-        lists: [{
-            title: 'MORNING',
-            tasks: [{
-                text: 'Review Code',
-                completed: false,
-                editing: false
-            }, {
-                text: 'Email Accountant',
-                completed: false,
-                editing: false
-            }]
-        }, {
-            title: 'AFTERNOON',
-            tasks: [{
-                text: 'Book Flights',
-                completed: false,
-                editing: false
-            }, {
-                text: 'Plan Event',
-                completed: false,
-                editing: false
-            }]
-        }, {
-            title: 'NIGHT',
-            tasks: [{
-                text: 'Clean Dishes',
-                completed: false,
-                editing: false
-            }]
-        }]
-    },
-    {
-        title: moment().add(8, 'days').format("MMM Do YY"),
-        date: moment().add(8, 'days'),
-        lists: [{
-            title: 'MORNING',
-            tasks: [{
-                text: 'Review Code',
-                completed: false,
-                editing: false
-            }, {
-                text: 'Email Accountant',
-                completed: false,
-                editing: false
-            }]
-        }, {
-            title: 'AFTERNOON',
-            tasks: [{
-                text: 'Book Flights',
-                completed: false,
-                editing: false
-            }, {
-                text: 'Plan Event',
-                completed: false,
-                editing: false
-            }]
-        }, {
-            title: 'NIGHT',
-            tasks: [{
-                text: 'Clean Dishes',
-                completed: false,
-                editing: false
-            }]
-        }]
-    },
-    {
-        title: moment().add(-3, 'days').format("MMM Do YY"),
-        date: moment().add(-3, 'days'),
-        lists: [{
-            title: 'MORNING',
-            tasks: [{
-                text: 'Review Code',
-                completed: false,
-                editing: false
-            }, {
-                text: 'Email Accountant',
-                completed: false,
-                editing: false
-            }]
-        }, {
-            title: 'AFTERNOON',
-            tasks: [{
-                text: 'Book Flights',
-                completed: false,
-                editing: false
-            }, {
-                text: 'Plan Event',
-                completed: false,
-                editing: false
-            }]
-        }, {
-            title: 'NIGHT',
-            tasks: [{
-                text: 'Clean Dishes',
-                completed: false,
-                editing: false
-            }]
-        }]
-    }]
+    data: []
+    // data: [{
+    //     date: moment().add(0, 'days'),
+    //     lists: [{
+    //         title: 'MORNING',
+    //         tasks: [{
+    //             text: 'Review Code',
+    //             completed: false,
+    //             editing: false
+    //         }, {
+    //             text: 'Email Accountant',
+    //             completed: false,
+    //             editing: false
+    //         }]
+    //     }, {
+    //         title: 'AFTERNOON',
+    //         tasks: [{
+    //             text: 'Book Flights',
+    //             completed: false,
+    //             editing: false
+    //         }, {
+    //             text: 'Plan Event',
+    //             completed: false,
+    //             editing: false
+    //         }]
+    //     }, {
+    //         title: 'NIGHT',
+    //         tasks: [{
+    //             text: 'Clean Dishes',
+    //             completed: false,
+    //             editing: false
+    //         }]
+    //     }]
+    // },
+    // {
+    //     date: moment().add(-20, 'days'),
+    //     lists: [{
+    //         title: 'MORNING',
+    //         tasks: [{
+    //             text: 'Review Code',
+    //             completed: false,
+    //             editing: false
+    //         }, {
+    //             text: 'Email Accountant',
+    //             completed: false,
+    //             editing: false
+    //         }]
+    //     }, {
+    //         title: 'AFTERNOON',
+    //         tasks: [{
+    //             text: 'Book Flights',
+    //             completed: false,
+    //             editing: false
+    //         }, {
+    //             text: 'Plan Event',
+    //             completed: false,
+    //             editing: false
+    //         }]
+    //     }, {
+    //         title: 'NIGHT',
+    //         tasks: [{
+    //             text: 'Clean Dishes',
+    //             completed: false,
+    //             editing: false
+    //         }]
+    //     }]
+    // },
+    // {
+    //     date: moment().add(8, 'days'),
+    //     lists: [{
+    //         title: 'MORNING',
+    //         tasks: [{
+    //             text: 'Review Code',
+    //             completed: false,
+    //             editing: false
+    //         }, {
+    //             text: 'Email Accountant',
+    //             completed: false,
+    //             editing: false
+    //         }]
+    //     }, {
+    //         title: 'AFTERNOON',
+    //         tasks: [{
+    //             text: 'Book Flights',
+    //             completed: false,
+    //             editing: false
+    //         }, {
+    //             text: 'Plan Event',
+    //             completed: false,
+    //             editing: false
+    //         }]
+    //     }, {
+    //         title: 'NIGHT',
+    //         tasks: [{
+    //             text: 'Clean Dishes',
+    //             completed: false,
+    //             editing: false
+    //         }]
+    //     }]
+    // },
+    // {
+    //     date: moment().add(-3, 'days'),
+    //     lists: [{
+    //         title: 'MORNING',
+    //         tasks: [{
+    //             text: 'Review Code',
+    //             completed: false,
+    //             editing: false
+    //         }, {
+    //             text: 'Email Accountant',
+    //             completed: false,
+    //             editing: false
+    //         }]
+    //     }, {
+    //         title: 'AFTERNOON',
+    //         tasks: [{
+    //             text: 'Book Flights',
+    //             completed: false,
+    //             editing: false
+    //         }, {
+    //             text: 'Plan Event',
+    //             completed: false,
+    //             editing: false
+    //         }]
+    //     }, {
+    //         title: 'NIGHT',
+    //         tasks: [{
+    //             text: 'Clean Dishes',
+    //             completed: false,
+    //             editing: false
+    //         }]
+    //     }]
+    // }]
 };
 
 export const endeavorReducer = (state = initialState, action) => {
-    console.log(action, state);
+    // console.log(action, state);
 
     switch (action.type) {
         case ADD_DAY:

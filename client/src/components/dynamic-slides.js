@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Slider from 'react-slick'
 
 import styled from "styled-components";
-import {getCalendar} from '../actions';
+import {getDays} from '../actions';
 
 import CalendarNav from './cal-nav';
 import Day from './day';
@@ -24,7 +24,7 @@ export class DynamicSlides extends Component {
   }
 
   componentDidMount(){
-    this.props.dispatch(getCalendar(this.props, 0, 'week'));
+    this.props.dispatch(getDays(this.props, 0, 'week'));
   }
 
 
@@ -33,7 +33,7 @@ export class DynamicSlides extends Component {
 
     const days = this.props.days.map((day, index) => (
         <div className="day-wrapper" key={index}>
-            <Day index={index} {...day} />
+            <Day ref={day._id} index={index} {...day} />
         </div>
     ));
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+var moment = require('moment');
+
 
 import List from './list';
 
@@ -15,7 +17,8 @@ export class Day extends React.Component {
     }
 
     addTask(text, listIndex) {
-        this.props.dispatch(saveTask(text, listIndex, this.props.index, this.props.date));
+        console.log(this);
+        this.props.dispatch(saveTask(text, listIndex, this.props.index, this.props.date, this.props._id));
     }
 
     completeTask(listIndex, taskIndex){
@@ -49,9 +52,11 @@ export class Day extends React.Component {
             </li>
         ));
 
+        const title = moment(this.props.date).format("MMM Do YY");
+
         return (
             <div className="day">
-                <h3>{this.props.title}</h3>
+                <h3>{title}</h3>
                 <ul className="lists">
                     {lists}
                     {/*<li className="add-list-wrapper">

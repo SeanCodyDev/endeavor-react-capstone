@@ -24,7 +24,7 @@ export class DynamicSlides extends Component {
   }
 
   componentDidMount(){
-    this.props.dispatch(getCalendar(this.props, 0, 'week'));
+    this.props.dispatch(getDays(this.props, 0, 'week'));
   }
 
 
