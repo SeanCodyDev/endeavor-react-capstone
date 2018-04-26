@@ -9,21 +9,23 @@ export const addList = title => ({
 });
 
 export const ADD_TASK = 'ADD_TASK';
-export const addTask = (text, listIndex, dayIndex) => ({
-    type: ADD_TASK,
-    text,
-    listIndex,
-    dayIndex
-});
+export const addTask = (text, listIndex, dayIndex) => {
+    console.log("testing addTask");
+    
+    return {
+        type: ADD_TASK,
+        text,
+        listIndex,
+        dayIndex
+    }};
 
-//id needs to be passed as a param on next line and included in the body on line 26 {id: id}
-//but first it needs to be passed to the days that are displayed
-export const saveTask = (text, listIndex, dayIndex, date, id) => (dispatch, getState) => {
+
+export const saveTask = (text, listIndex, dayIndex, date, id, taskIndex) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     console.log(text, date);
     return fetch(`${API_BASE_URL}/addTask`, {
         method: 'POST',
-        body: JSON.stringify({text: text, listIndex: listIndex, date: date, id: id}),
+        body: JSON.stringify({text: text, listIndex: listIndex, date: date, id: id, taskIndex: taskIndex}),
         headers: {
             // Provide our auth token as credentials
             Authorization: `Bearer ${authToken}`,
@@ -33,7 +35,18 @@ export const saveTask = (text, listIndex, dayIndex, date, id) => (dispatch, getS
     })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
-        .then(({data}) => dispatch(addTask(text, listIndex, dayIndex)))
+        .then((data) => {
+            console.log(data);
+            if (!taskIndex && taskIndex != 0) {
+                dispatch(addTask(text, listIndex, dayIndex))
+                
+            } else {
+                console.log(text, dayIndex, listIndex, taskIndex)
+                dispatch(updateTask(text, dayIndex, listIndex, taskIndex))
+                        // this.props.dispatch(updateTask(text, this.props.index, listIndex, taskIndex))
+
+            }
+        })   
         .catch(err => {
             console.log(err);
             // dispatch(fetchProtectedDataError(err));
@@ -108,13 +121,38 @@ export const editTask = (dayIndex, listIndex, taskIndex) => ({
 })
 
 export const UPDATE_TASK = 'UPDATE_TASK';
-export const updateTask = (text, dayIndex, listIndex, taskIndex) => ({
-    type: UPDATE_TASK,
-    text,
-    dayIndex,
-    listIndex, 
-    taskIndex
-})
+export const updateTask = (text, dayIndex, listIndex, taskIndex) => {
+    console.log("testing updateTask");
+
+    return {
+        type: UPDATE_TASK,
+        text,
+        dayIndex,
+        listIndex, 
+        taskIndex
+    }};
+
+// export const updateTaskToCollection = (text, dayIndex, listIndex, taskIndex, id) => (dispatch, getState) => {
+//     const authToken = getState().auth.authToken;
+//     console.log('eraseTask called');
+//     return fetch(`${API_BASE_URL}/updateTask`, {
+//         method: 'POST',
+//         body: JSON.stringify({text: text, listIndex: listIndex, dayIndex: dayIndex, taskIndex: taskIndex, id: id}),
+//         headers: {
+//             // Provide our auth token as credentials
+//             Authorization: `Bearer ${authToken}`,
+//             'Accept': 'application/json, text/plain, */*',
+//             'Content-Type': 'application/json'
+//         }
+//     })
+//         .then(res => normalizeResponseErrors(res))
+//         .then(res => res.json())
+//         .then(({data}) => dispatch(updateTask(text, dayIndex, listIndex, taskIndex)))
+//         .catch(err => {
+//             console.log(err);
+//             // dispatch(fetchProtectedDataError(err));
+//         });
+// };
 
 export const GET_CALENDAR = 'GET_CALENDAR';
 export const getCalendar = (days, props, num, period) => {

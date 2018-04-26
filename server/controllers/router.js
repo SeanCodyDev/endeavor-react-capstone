@@ -29,11 +29,12 @@ router.post('/addDay', [passport.authenticate('jwt', {session: false}), jsonPars
 //Add Task
 router.post('/addTask', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.addTask);
 
+//Update Task
+// router.post('/updateTask', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.updateTask);
+
 //Get Days
 router.post('/getDays', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.getDays);
 
-//Delete Task
-router.post('/deleteTask', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.deleteTask);
 
 
 

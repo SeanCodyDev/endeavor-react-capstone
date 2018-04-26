@@ -31,6 +31,7 @@ exports.getDays = function(req, res, next) {
 exports.addTask = function(req, res, next) {
     console.log('addTask called', req.body, req.user);
     let id = req.body.id || null;
+    let taskIndex = Number(req.body.taskIndex);
 
     // Setup stuff
     let query = {
@@ -44,9 +45,12 @@ exports.addTask = function(req, res, next) {
 
     // Find the document
     Day.findOneAndUpdate(query, {}, options, function(error, result) {
+
+
         console.log(error);
         if (!error) {
             // If the document doesn't exist
+
             if (!result) {
                 // Create it
                 result = new Day(req.body);
@@ -58,13 +62,20 @@ exports.addTask = function(req, res, next) {
 
 
             }
-            result.lists[listNumber].tasks.push({text: req.body.text, completed: false, editing: false});
+
+            if (!taskIndex && taskIndex != 0) {
+                result.lists[listNumber].tasks.push({text: req.body.text, completed: false, editing: false});
+            
+            } else {
+                result.lists[listNumber].tasks[taskIndex] = {text: req.body.text, completed: false, editing: false};
+            }
             result.markModified('lists');
             console.log('result', result);
             // Save the document
             result.save(function(error) {
                 if (!error) {
                     // Do something with the document
+                    res.json({success: true})
                 } else {
                     console.log(error);
                     throw error;
@@ -75,27 +86,29 @@ exports.addTask = function(req, res, next) {
 
 };
 
-//Delete exixting tasks
-exports.deleteTask = function(req, res, next) {
-    console.log('deleteTask called', req.body, req.params, req.user);
-    //
-    return res.json({
-        // data: 'rosebud'
-    });
-};
+// //Update existing tasks
+// exports.updateTask = function(req, res, next) {
+//     console.log('updateTask called', req.body, req.user);
 
+//     // Setup stuff
+//     let options = {
+//             upsert: false
+//         };
 
-const newDay = {
-    // title: moment(startOfCurrentWeek).add(i, 'days').format("MMM Do YY"),
-    date: '',
-    lists: [{
-        title: 'MORNING',
-        tasks: []
-    }, {
-        title: 'AFTERNOON',
-        tasks: []
-    }, {
-        title: 'NIGHT',
-        tasks: []
-    }]
-}
+//     let listNumber = Number(req.body.listIndex);
+//     let taskNumber = Number(req.body.taskIndex);
+//     console.log("listNumber:", listNumber, "taskNumber:", taskNumber);
+
+//       const updated = {};
+//       console.log("check:", updated.lists[listNumber].tasks);
+//       updated.lists[listNumber].tasks[taskNumber].text = req.body.text;
+
+//       console.log(updated);
+
+//       Day
+//         .findByIdAndUpdate(req.body.id, { $set: updated }, options)
+//         .then(updatedPost => res.status(204).end())
+//         .catch(err => res.status(500).json({ message: 'Something went wrong' }));
+
+// };
+

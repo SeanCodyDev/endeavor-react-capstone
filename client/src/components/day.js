@@ -5,7 +5,7 @@ var moment = require('moment');
 
 import List from './list';
 
-import {addList, addDay, addTask, completeTask, deleteTask, editTask, updateTask, saveTask, eraseTask} from '../actions';
+import {addList, addDay, addTask, completeTask, deleteTask, editTask, updateTask, saveTask, eraseTask, updateTaskToCollection} from '../actions';
 
 export class Day extends React.Component {
     addList(title) {
@@ -35,7 +35,8 @@ export class Day extends React.Component {
     }
 
     updateTask(text, listIndex, taskIndex) {
-        this.props.dispatch(updateTask(text, this.props.index, listIndex, taskIndex))
+        this.props.dispatch(saveTask(text, listIndex, this.props.index, this.props.date, this.props._id, taskIndex.index));
+        // this.props.dispatch(updateTask(text, this.props.index, listIndex, taskIndex))
     }
 
     render() {
