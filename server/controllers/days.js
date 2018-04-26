@@ -31,28 +31,15 @@ exports.getDays = function(req, res, next) {
 exports.addTask = function(req, res, next) {
     console.log('addTask called', req.body, req.user);
     let id = req.body.id || null;
-    console.log("id:", id);
 
     // Setup stuff
-    var pushObj = {};
-    //dynamically set field name
-    pushObj[`lists.${req.body.listIndex}.tasks`] = {text: req.body.text, completed: false, editing: false};
-    console.log(pushObj);
-    var query = {
+    let query = {
             _id: id
-        },
-        update = {
-            $push: pushObj
         },
         options = {
             upsert: false
         };
 
-
-    const newDayUpdates = Object.assign({
-        user: req.user
-        }, req.body);
-    newDayUpdates[`lists.${req.body.listIndex}.tasks`] = {text: req.body.text, completed: false, editing: false};
     let listNumber = Number(req.body.listIndex);
 
     // Find the document
@@ -72,10 +59,8 @@ exports.addTask = function(req, res, next) {
 
             }
             result.lists[listNumber].tasks.push({text: req.body.text, completed: false, editing: false});
-            result.lists[2].tasks.push({text: 'now pls', completed: false, editing: false});
             result.markModified('lists');
             console.log('result', result);
-            console.log(result.lists[2].tasks)
             // Save the document
             result.save(function(error) {
                 if (!error) {
