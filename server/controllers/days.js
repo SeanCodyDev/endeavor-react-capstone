@@ -67,7 +67,11 @@ exports.saveTask = function(req, res, next) {
             
             } else {
                 if (!req.body.del){
-                    result.lists[listNumber].tasks[taskIndex] = {text: req.body.text, completed: false, editing: false};
+                    if (!req.body.completed){
+                        result.lists[listNumber].tasks[taskIndex] = {text: req.body.text, completed: false, editing: false};
+                    } else {
+                        result.lists[listNumber].tasks[taskIndex] = {text: req.body.text, completed: true, editing: false};
+                    }
                 } else {
                     result.lists[listNumber].tasks.splice(taskIndex, 1);
                 }

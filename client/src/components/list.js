@@ -12,8 +12,8 @@ export class List extends React.Component {
         this.props.addTask(text, this.props.index);
     }
 
-    completeTask(taskIndex) {
-        this.props.completeTask(this.props.index, taskIndex);
+    completeTask(text, taskIndex) {
+        this.props.completeTask(text, this.props.index, taskIndex);
     }
 
     deleteTask(taskIndex) {
@@ -33,7 +33,7 @@ export class List extends React.Component {
         const tasks = this.props.tasks.map((task, index) =>
             <li key={index}>
                 <Task {...task} 
-                    onClick={(e) => this.completeTask({index})} 
+                    onClick={(text) => this.completeTask(text, {index})} 
                     onDelete={(e) => this.deleteTask({index})}
                     onEdit={(e) => this.editTask({index})}
                     onUpdate={(text) => this.updateTask(text, {index})}

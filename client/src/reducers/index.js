@@ -203,7 +203,7 @@ export const endeavorReducer = (state = initialState, action) => {
                         } else {
 
                             let tasks = list.tasks.map((task, taskInd) => {
-                                if (taskInd !== action.taskIndex.index) {
+                                if (taskInd !== action.taskIndex) {
                                     return task;
                                 } else {
 

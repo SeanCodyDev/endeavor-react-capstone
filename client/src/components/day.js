@@ -21,12 +21,11 @@ export class Day extends React.Component {
         this.props.dispatch(saveTask(text, listIndex, this.props.index, this.props.date, this.props._id));
     }
 
-    completeTask(listIndex, taskIndex){
-        this.props.dispatch(saveTask("", listIndex, this.props.index, this.props.date, this.props._id, taskIndex.index))
+    completeTask(text, listIndex, taskIndex){
+        this.props.dispatch(saveTask(text, listIndex, this.props.index, this.props.date, this.props._id, taskIndex.index, false, true))
     }
 
     deleteTask(listIndex, taskIndex) {
-        console.log(this.props.index);
         this.props.dispatch(saveTask("", listIndex, this.props.index, this.props.date, this.props._id, taskIndex.index, true));
     }
 
@@ -45,7 +44,7 @@ export class Day extends React.Component {
                 <List 
                     index={index} {...list} 
                     addTask={(text, listIndex) => this.addTask(text, listIndex)} 
-                    completeTask={(listIndex, taskIndex) => this.completeTask(listIndex, taskIndex)}
+                    completeTask={(text, listIndex, taskIndex) => this.completeTask(text, listIndex, taskIndex)}
                     deleteTask={(listIndex, taskIndex) => this.deleteTask(listIndex, taskIndex)}
                     editTask={(listIndex, taskIndex) => this.editTask(listIndex, taskIndex)}
                     updateTask={(text, listIndex, taskIndex) => this.updateTask(text, listIndex, taskIndex)}
