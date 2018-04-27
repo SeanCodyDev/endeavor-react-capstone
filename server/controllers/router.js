@@ -27,7 +27,7 @@ router.post('/refresh', passport.authenticate('jwt', {session: false}), AuthCont
 router.post('/addDay', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.addDay);
 
 //Add Task
-router.post('/addTask', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.addTask);
+router.post('/saveTask', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.saveTask);
 
 //Update Task
 // router.post('/updateTask', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.updateTask);
@@ -35,6 +35,8 @@ router.post('/addTask', [passport.authenticate('jwt', {session: false}), jsonPar
 //Get Days
 router.post('/getDays', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.getDays);
 
+//Delete Task
+// router.post('/deleteTask', [passport.authenticate('jwt', {session: false}), jsonParser],DayController.deleteTask);
 
 
 

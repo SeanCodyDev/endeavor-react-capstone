@@ -323,7 +323,7 @@ export const endeavorReducer = (state = initialState, action) => {
                         } else {
 
                             let tasks = list.tasks.filter((task, taskInd) => {
-                                return taskInd !== action.taskIndex.index;
+                                return taskInd !== action.taskIndex;
                             });
                             return Object.assign({}, list, {
                                 tasks

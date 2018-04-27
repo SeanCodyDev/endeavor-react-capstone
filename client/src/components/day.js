@@ -22,12 +22,12 @@ export class Day extends React.Component {
     }
 
     completeTask(listIndex, taskIndex){
-        this.props.dispatch(completeTask(this.props.index, listIndex, taskIndex))
+        this.props.dispatch(saveTask("", listIndex, this.props.index, this.props.date, this.props._id, taskIndex.index))
     }
 
     deleteTask(listIndex, taskIndex) {
         console.log(this.props.index);
-        this.props.dispatch(eraseTask(this.props.index, listIndex, taskIndex))
+        this.props.dispatch(saveTask("", listIndex, this.props.index, this.props.date, this.props._id, taskIndex.index, true));
     }
 
     editTask(listIndex, taskIndex) {

@@ -14,7 +14,6 @@ exports.addDay = function(req, res, next) {
 
 //Get Days
 exports.getDays = function(req, res, next) {
-    console.log('getDays called', req.body);
     Day
         .find()
         .then(days => {
@@ -28,7 +27,7 @@ exports.getDays = function(req, res, next) {
 }
 
 //Add Tasks to new or existing days
-exports.addTask = function(req, res, next) {
+exports.saveTask = function(req, res, next) {
     console.log('addTask called', req.body, req.user);
     let id = req.body.id || null;
     let taskIndex = Number(req.body.taskIndex);
@@ -67,7 +66,13 @@ exports.addTask = function(req, res, next) {
                 result.lists[listNumber].tasks.push({text: req.body.text, completed: false, editing: false});
             
             } else {
-                result.lists[listNumber].tasks[taskIndex] = {text: req.body.text, completed: false, editing: false};
+                if (!req.body.del){
+                    result.lists[listNumber].tasks[taskIndex] = {text: req.body.text, completed: false, editing: false};
+                } else {
+                    result.lists[listNumber].tasks.splice(taskIndex, 1);
+                }
+
+
             }
             result.markModified('lists');
             console.log('result', result);
@@ -85,6 +90,7 @@ exports.addTask = function(req, res, next) {
     });
 
 };
+
 
 // //Update existing tasks
 // exports.updateTask = function(req, res, next) {

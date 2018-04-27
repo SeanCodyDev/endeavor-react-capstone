@@ -20,12 +20,11 @@ export const addTask = (text, listIndex, dayIndex) => {
     }};
 
 
-export const saveTask = (text, listIndex, dayIndex, date, id, taskIndex) => (dispatch, getState) => {
+export const saveTask = (text, listIndex, dayIndex, date, id, taskIndex, del) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
-    console.log(text, date);
-    return fetch(`${API_BASE_URL}/addTask`, {
+    return fetch(`${API_BASE_URL}/saveTask`, {
         method: 'POST',
-        body: JSON.stringify({text: text, listIndex: listIndex, date: date, id: id, taskIndex: taskIndex}),
+        body: JSON.stringify({text: text, listIndex: listIndex, date: date, id: id, taskIndex: taskIndex, del: del}),
         headers: {
             // Provide our auth token as credentials
             Authorization: `Bearer ${authToken}`,
@@ -40,11 +39,11 @@ export const saveTask = (text, listIndex, dayIndex, date, id, taskIndex) => (dis
             if (!taskIndex && taskIndex != 0) {
                 dispatch(addTask(text, listIndex, dayIndex))
                 
-            } else {
-                console.log(text, dayIndex, listIndex, taskIndex)
+            } else if(!del) {
                 dispatch(updateTask(text, dayIndex, listIndex, taskIndex))
-                        // this.props.dispatch(updateTask(text, this.props.index, listIndex, taskIndex))
 
+            } else {
+                dispatch(deleteTask(dayIndex, listIndex, taskIndex))
             }
         })   
         .catch(err => {
