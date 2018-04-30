@@ -2,27 +2,5 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background: #1976D2;
-  }
-  
-  h2, h3 {
-    margin: 0;
-  }
-  
-  h2 {
-    color: white;
-  }
-  
-  ul {
-  padding: 0;
-  margin-top: 15px;
-  margin-bottom: 0;
-  list-style-type: none;
-  }
-  
-  ul.lists {
-  }
-  
-  input {
-    display: block;
+    background-color: #F6F6F6;
   }

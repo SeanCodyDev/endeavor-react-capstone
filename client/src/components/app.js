@@ -9,6 +9,7 @@ import Add from './Add';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
 import DynamicSlides from './dynamic-slides';
+import Main from './main';
 
 
 export class App extends React.Component {
@@ -54,10 +55,7 @@ export class App extends React.Component {
         return (
             <div className="app">
                 <HeaderBar />
-                <Route exact path="/" component={LandingPage} />
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/register" component={RegistrationPage} />
-                <Route exact path="/add" component={Add} />
+                <Main />
             </div>
         );
     }

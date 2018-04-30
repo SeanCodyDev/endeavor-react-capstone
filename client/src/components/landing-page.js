@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
+import styled from "styled-components";
+
 
 import LoginForm from './login-form';
 
@@ -10,12 +12,18 @@ export function LandingPage(props) {
         return <Redirect to="/dashboard" />;
     }
 
+    const Home = styled.div`
+        margin-top: 100px;
+        text-align: center;
+    `;
+
     return (
-        <div className="home">
+        <Home>
             <h2>Welcome to Endeavor</h2>
-            <LoginForm />
+            <LoginForm class-name="login-form" />
+            
             <Link to="/register">Register</Link>
-        </div>
+        </Home>
     );
 }
 

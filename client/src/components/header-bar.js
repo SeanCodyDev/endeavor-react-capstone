@@ -28,6 +28,7 @@ export class HeaderBar extends React.Component {
         padding-bottom: 0;
         overflow: visible;
         position: fixed;
+        top: 0;
         `;
 
         // Only render the log out button if we are logged in
