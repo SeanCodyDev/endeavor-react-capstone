@@ -9,7 +9,6 @@ import CalendarNav from './cal-nav';
 import Day from './day';
 import Button from './button';
 import Title from './title';
-import Header from './header';
 // var moment = require('moment');
 
 

@@ -19,16 +19,16 @@ export class HeaderBar extends React.Component {
 
     render() {
 
-    const Header = styled.div`
-    background-color: #FFFFFF;
-    width: 100%;
-    justify-content: space-between;
-    display: block;
-    height: auto;
-    padding-bottom: 0;
-    overflow: visible;
-    
-    `;
+        const Header = styled.div`
+        background-color: #FFFFFF;
+        width: 100%;
+        justify-content: space-between;
+        display: block;
+        height: auto;
+        padding-bottom: 0;
+        overflow: visible;
+        position: fixed;
+        `;
 
         // Only render the log out button if we are logged in
         let logOutButton;

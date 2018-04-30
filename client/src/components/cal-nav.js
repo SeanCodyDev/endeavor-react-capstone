@@ -4,7 +4,6 @@ import styled from "styled-components";
 import {getCalendar, getDays} from '../actions';
 import Button from './button';
 import Title from './title';
-import Header from './header';
 
 
 export class CalendarNav extends Component {
