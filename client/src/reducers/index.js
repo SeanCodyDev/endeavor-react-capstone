@@ -345,7 +345,8 @@ export const endeavorReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                days:action.days
+                days:action.days,
+                data: action.data
             }
 
         default:

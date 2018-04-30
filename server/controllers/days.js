@@ -14,8 +14,9 @@ exports.addDay = function(req, res, next) {
 
 //Get Days
 exports.getDays = function(req, res, next) {
+    console.log("req.user:", req.user);
     Day
-        .find()
+        .find({"user.id": req.user.id})
         .then(days => {
             res.json(days);
           // res.json(days.map(days => post.serialize()));

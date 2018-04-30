@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import {fetchProtectedData} from '../actions/protected-data';
+import DynamicSlides from './dynamic-slides';
+ 
 
 export class Dashboard extends React.Component {
     componentDidMount() {
@@ -20,6 +22,8 @@ export class Dashboard extends React.Component {
         return (
             <div className="dashboard">
                 <br />
+                <DynamicSlides />
+
                 <div className="dashboard-username">
                     Email: {this.props.email}
                 </div>

@@ -136,12 +136,14 @@ export const updateTask = (text, dayIndex, listIndex, taskIndex) => {
 
 export const GET_CALENDAR = 'GET_CALENDAR';
 export const getCalendar = (days, props, num, period) => {
-    console.log("getCalendar:", days);
-    console.log('props', props);
+    console.log("this:", this);
+    console.log("props:", props);
+    console.log('props start', props.startOfCurrentWeek);
     props.startOfCurrentWeek.add(num, period).startOf('week');
     return ({
     type: GET_CALENDAR,
     days: createArrayOfDays(props.startOfCurrentWeek, days),
+    data: days
     });
 }
 

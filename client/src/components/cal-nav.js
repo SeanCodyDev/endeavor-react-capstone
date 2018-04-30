@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import styled from "styled-components";
-import {getCalendar} from '../actions';
+import {getCalendar, getDays} from '../actions';
 import Button from './button';
 import Title from './title';
 import Header from './header';
@@ -15,19 +15,20 @@ export class CalendarNav extends Component {
   }
 
    fetchNextWeek = () => {
-    this.props.dispatch(getCalendar(this.props, 1, 'week'));
+    this.props.dispatch(getDays(this.props, 1, 'week'));
     }
 
   fetchPrevWeek = () => {
-    this.props.dispatch(getCalendar(this.props, -1, 'week'));
+    this.props.dispatch(getDays(this.props, -1, 'week'));
     }
 
   fetchNextMonth = () => {
-    this.props.dispatch(getCalendar(this.props, 1, 'month'));
+    console.log(this);
+    this.props.dispatch(getDays(this.props, 1, 'month'));
     }
 
   fetchPrevMonth = () => {
-    this.props.dispatch(getCalendar(this.props, -1, 'month'));
+    this.props.dispatch(getDays(this.props, -1, 'month'));
     }
 
   render() {

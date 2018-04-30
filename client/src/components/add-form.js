@@ -27,6 +27,7 @@ export default class AddForm extends React.Component {
         });
     }
 
+
     render() {
         if (!this.state.editing) {
             return (
