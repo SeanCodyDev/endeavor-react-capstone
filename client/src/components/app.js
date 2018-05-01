@@ -10,6 +10,7 @@ import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
 import DynamicSlides from './dynamic-slides';
 import Main from './main';
+import Footer from './footer';
 
 
 export class App extends React.Component {
@@ -56,6 +57,7 @@ export class App extends React.Component {
             <div className="app">
                 <HeaderBar />
                 <Main />
+                <Footer />
             </div>
         );
     }

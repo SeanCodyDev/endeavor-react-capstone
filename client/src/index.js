@@ -7,6 +7,7 @@ import store from './store';
 import './index.css';
 import LazyLoad from './components/lazyload';
 import DynamicSlides from './components/dynamic-slides';
+import 'font-awesome/css/font-awesome.min.css'; 
 
 ReactDOM.render(
     <Provider store={store}>

@@ -14,6 +14,7 @@ const Button = styled.button`
   border-radius: 3px;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
+  width: ${props => props.fullWidth ? '100%' : 'auto'}
 `;
 
 export default Button;

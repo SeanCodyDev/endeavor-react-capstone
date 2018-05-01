@@ -10,6 +10,7 @@ const Title = styled.h1`
   padding: 15px;
   margin: 0;
   float: left;
+
 `;
 
 export default Title;

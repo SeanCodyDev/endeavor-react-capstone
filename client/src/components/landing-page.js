@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import styled from "styled-components";
 
-
+//import components
+import Row from './row';
 import LoginForm from './login-form';
 
 export function LandingPage(props) {
@@ -19,10 +20,12 @@ export function LandingPage(props) {
 
     return (
         <Home>
-            <h2>Welcome to Endeavor</h2>
-            <LoginForm class-name="login-form" />
-            
-            <Link to="/register">Register</Link>
+            <Row>
+                <h2>Welcome to Endeavor</h2>
+                <img width="100%" src="../images/landing-img-copy.jpg" />
+                <LoginForm class-name="login-form" />      
+                <Link to="/register">Register</Link>
+            </Row>
         </Home>
     );
 }
