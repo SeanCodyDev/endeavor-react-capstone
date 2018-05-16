@@ -9,19 +9,11 @@ import Button from './button';
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
+        console.log('onSubmit test 2', values.email);
         return this.props.dispatch(login(values.email, values.password));
     }
 
     render() {
-
-        const LoginCard = styled.div`
-            border-radius: 5px
-            background-color: white;
-            padding: 15px;
-            margin-left: 25%;
-            width: 50%;
-            text-align: left;
-        `;
 
         let error;
         if (this.props.error) {
@@ -31,12 +23,15 @@ export class LoginForm extends React.Component {
                 </div>
             );
         }
+
+
         return (
-            <LoginCard>
+            <div>
                 <h1><span className="fa fa-sign-in"></span>Login</h1>
                 <form
                     className="login-form"
-                    onSubmit={this.props.handleSubmit(values =>
+                    onSubmit={
+                        this.props.handleSubmit(values =>
                         this.onSubmit(values)
                     )}>
                     {error}
@@ -56,11 +51,11 @@ export class LoginForm extends React.Component {
                         id="password"
                         validate={[required, nonEmpty]}
                     />
-                    <Button disabled={this.props.pristine || this.props.submitting} fullWidth>
-                        Log In
-                    </Button>
+                    <button type="submit">
+                        Submit
+                    </button>
                 </form>
-            </LoginCard>
+            </div>
         );
     }
 }

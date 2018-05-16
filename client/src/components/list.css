@@ -6,6 +6,10 @@
     border-radius: 4px;
 }
 
+li {
+	list-style-type: none;
+}
+
 /*.list:first-child {
     margin-left: 0;
 }

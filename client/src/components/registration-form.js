@@ -20,17 +20,9 @@ export class RegistrationForm extends React.Component {
 
     render() {
 
-        const RegistrationCard = styled.div`
-        border-radius: 5px
-        background-color: white;
-        padding: 15px;
-        margin-left: 25%;
-        width: 50%;
-        text-align: left;
-        `;
+
 
         return (
-            <RegistrationCard>
                 <form
                     className="login-form"
                     onSubmit={this.props.handleSubmit(values =>
@@ -57,13 +49,13 @@ export class RegistrationForm extends React.Component {
                         name="passwordConfirm"
                         validate={[required, nonEmpty, matches('password')]}
                     />
+
                     <Button
                         type="submit"
                         disabled={this.props.pristine || this.props.submitting}>
                         Register
                     </Button>
                 </form>
-            </RegistrationCard>
         );
     }
 }
@@ -73,3 +65,4 @@ export default reduxForm({
     onSubmitFail: (errors, dispatch) =>
         dispatch(focus('registration', Object.keys(errors)[0]))
 })(RegistrationForm);
+

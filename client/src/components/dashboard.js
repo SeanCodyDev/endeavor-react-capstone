@@ -24,9 +24,6 @@ export class Dashboard extends React.Component {
                 <br />
                 <DynamicSlides />
 
-                <div className="dashboard-username">
-                    Email: {this.props.email}
-                </div>
                 
                 {/* ===== OBSOLETE =====
                 <div className="dashboard-protected-data">

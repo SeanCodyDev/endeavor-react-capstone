@@ -182,7 +182,6 @@ console.log(newDaysArray);
 
 for (let i=0; i<7; i++) {
     for (let k=0; k<newDaysArray.days.length; k++) {
-        console.log(moment(newDaysArray.days[k].date).format("MMM Do YY"));
         // console.log(newDaysArray.days[k].date.format("MMM Do YY"), moment(startOfCurrentWeek).add(i, 'days').format("MMM Do YY"),newDaysArray.days[k].date.format("MMM Do YY") === moment(startOfCurrentWeek).add(i, 'days').format("MMM Do YY") )
         if (moment(newDaysArray.days[k].date).format("MMM Do YY") === moment(startOfCurrentWeek).add(i, 'days').format("MMM Do YY")) {
             finalDaysArray.days[i] = newDaysArray.days[k];
@@ -191,13 +190,13 @@ for (let i=0; i<7; i++) {
             finalDaysArray.days[i] = {
                 date: moment(startOfCurrentWeek).add(i, 'days'),
                 lists: [{
-                    title: 'MORNING',
+                    title: 'Morning',
                     tasks: []
                 }, {
-                    title: 'AFTERNOON',
+                    title: 'Afternoon',
                     tasks: []
                 }, {
-                    title: 'NIGHT',
+                    title: 'Night',
                     tasks: []
                 }]
             }

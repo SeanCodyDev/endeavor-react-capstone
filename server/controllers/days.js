@@ -58,7 +58,7 @@ exports.saveTask = function(req, res, next) {
                 result['user'] = {email: req.user.email, id: req.user.id};
                 // result[`lists[${listNumber}].tasks`] = {text: req.body.text, completed: false, editing: false};
                 result['lists']=[];
-                result.lists.push({title: "morning", tasks: []}, {title: "afternoon", tasks: []}, {title: "night", tasks: []});
+                result.lists.push({title: "Morning", tasks: []}, {title: "Afternoon", tasks: []}, {title: "Night", tasks: []});
 
 
             }

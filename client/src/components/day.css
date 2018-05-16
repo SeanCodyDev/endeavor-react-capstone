@@ -1,14 +1,15 @@
 .lists {
 /*    display: flex;
     align-items: flex-start;*/
+    padding-left: 0;
 }
 
 .list-wrapper {
     background: #E0E0E0;
-    margin: 10px;
     padding: 8px;
     min-width: 200px;
     border-radius: 4px;
+    margin-bottom: 10px;
 }
 
 /*.list-wrapper:first-child {
@@ -18,3 +19,7 @@
 .list-wrapper:last-child {
     margin-right: 0;
 }*/
+
+.day {
+	margin: 10px;
+}

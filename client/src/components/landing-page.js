@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 //import components
 import Row from './row';
-import LoginForm from './login-form';
+import StyledCard from './styled-card';
 
 export function LandingPage(props) {
     // If we are logged in redirect straight to the user's dashboard
@@ -13,20 +13,18 @@ export function LandingPage(props) {
         return <Redirect to="/dashboard" />;
     }
 
-    const Home = styled.div`
-        margin-top: 100px;
-        text-align: center;
-    `;
-
     return (
-        <Home>
+        <div>
             <Row>
-                <h2>Welcome to Endeavor</h2>
                 <img width="100%" src="../images/landing-img-copy.jpg" />
-                <LoginForm class-name="login-form" />      
-                <Link to="/register">Register</Link>
             </Row>
-        </Home>
+            <Row>
+                <StyledCard>
+                    <h2>Welcome to Endeavor</h2>
+                    <p>You've got things to do. The world isn't waiting. Our simple, yet powerful, tool will help you focus on what matters most.</p>
+                </StyledCard>
+            </Row>
+        </div>
     );
 }
 

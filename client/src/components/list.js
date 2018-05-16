@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import Task from './task';
 import AddForm from './add-form';
+import './list.css';
 
 //this line isn't necessary because these methods are passed as props?
 // import {addTask, completeTask} from '../actions';

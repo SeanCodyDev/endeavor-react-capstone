@@ -12,6 +12,7 @@ import Add from './Add';
 import RegistrationPage from './registration-page';
 import DynamicSlides from './dynamic-slides';
 import Row from './row';
+import LoginPage from './login-page';
 
 
 
@@ -22,21 +23,20 @@ export class Main extends React.Component {
     render() {
 
         const MainDiv = styled.div`
-        padding-right: 15px;
-        padding-left: 15px;
         margin-right: auto;
         margin-left: auto;
         background-color: #F6F6F6;
+        margin-top: 65px;
+        min-height: 600px;
         `;
 
         return (
             <MainDiv>
-                <Row>
                     <Route exact path="/" component={LandingPage} />
+                    <Route exact path = "/login" component={LoginPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/register" component={RegistrationPage} />
                     <Route exact path="/add" component={Add} />
-                </Row>
             </MainDiv>
         );
     }

@@ -34,14 +34,21 @@ export class CalendarNav extends Component {
 
   	const Nav = styled.div`
   		text-align: center;
-      padding-top: 80px;
   	`
+
+    const NavTitle = styled.span`
+      padding: 10px;
+
+      @media (max-width: 800px) {
+        display: none;
+      }
+    `
 	    return (
 	      <Nav>
-	        <Button className='button' onClick={this.fetchPrevMonth}>Prev Month</Button>
-	        <Button className='button' onClick={this.fetchPrevWeek}>Prev Week</Button>
-	        <Button className='button' onClick={this.fetchNextWeek}>Next Week</Button>
-	        <Button className='button' onClick={this.fetchNextMonth}>Next Month</Button>
+	        <Button className='button' onClick={this.fetchPrevMonth}><span className="fa fa-chevron-left"></span><span className="fa fa-chevron-left"></span><NavTitle>Prev Month</NavTitle></Button>
+	        <Button className='button' onClick={this.fetchPrevWeek}><span className="fa fa-chevron-left"></span><NavTitle>Prev Week</NavTitle></Button>
+	        <Button className='button' onClick={this.fetchNextWeek}><NavTitle>Next Week</NavTitle><span className="fa fa-chevron-right"></span></Button>
+	        <Button className='button' onClick={this.fetchNextMonth}><NavTitle>Next Month</NavTitle><span className="fa fa-chevron-right"></span><span className="fa fa-chevron-right"></span></Button>
 	      </Nav>
 	    );
  	}
