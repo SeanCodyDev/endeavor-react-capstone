@@ -39,7 +39,7 @@ export class CalendarNav extends Component {
     const NavTitle = styled.span`
       padding: 10px;
 
-      @media (max-width: 800px) {
+      @media (max-width: 768px) {
         display: none;
       }
     `

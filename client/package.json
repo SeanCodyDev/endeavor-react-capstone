@@ -12,6 +12,7 @@
     "jwt-decode": "^2.2.0",
     "moment": "^2.22.0",
     "react": "^15.5.4",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^15.5.4",
     "react-lazyload": "^2.3.0",
     "react-redux": "^5.0.4",
