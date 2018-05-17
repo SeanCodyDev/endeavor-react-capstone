@@ -4,3 +4,11 @@
     padding: 8px;
     border-radius: 4px;
 }
+
+.task-checkbox {
+	padding-right: 10px;
+}
+
+.task-text:hover, .task-checkbox:hover input {
+	cursor: pointer;
+}

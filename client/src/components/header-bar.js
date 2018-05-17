@@ -5,8 +5,7 @@ import {setCurrentUser, setAuthToken} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import styled from "styled-components";
 
-//import styles
-import './header-bar.css';
+
 
 
 //import components
@@ -15,6 +14,9 @@ import Button from './button';
 import NavList from './nav-list';
 import ListItem from './list-item'
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
+
+//import styles
+import './header-bar.css';
 
 export class HeaderBar extends React.Component {
 
@@ -26,20 +28,6 @@ export class HeaderBar extends React.Component {
 
 
     render() {
-
-
-
-        const Email = styled.h3`
-        position: absolute;
-        margin: auto;
-        right: 0;
-        left: 0;
-        bottom: 0;
-
-        @media (max-width: 800px) {
-            display: none;
-        }
-        `
 
 
         // Only render the log out button if we are logged in

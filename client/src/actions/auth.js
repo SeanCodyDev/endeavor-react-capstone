@@ -39,7 +39,6 @@ export const login = (username, password) => dispatch => {
     // Base64 encode the string username:password, used in the basic
     // auth field
     const token = base64EncodingUTF8(`${username}:${password}`);
-    alert('token')
     return (
         fetch(`${API_BASE_URL}/login`, {
             method: 'POST',

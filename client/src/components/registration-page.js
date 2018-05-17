@@ -13,14 +13,19 @@ export function RegistrationPage(props) {
         return <Redirect to="/dashboard" />;
     }
 
-        const RegistrationCard = styled.div`
+    const RegistrationCard = styled.div`
         border-radius: 5px
         background-color: white;
         padding: 15px;
-        margin-left: 25%;
-        width: 50%;
+        margin: auto;
+        width: 80%;
         text-align: left;
-        `;
+        margin-top: 100px;
+
+      @media (min-width: 768px) {
+        width: 50%;
+      }
+    `;
 
     return (
         <div className="home">
@@ -28,7 +33,6 @@ export function RegistrationPage(props) {
                 <h2><span className="fa fa-sign-in"></span>Register</h2>
                 <RegistrationForm />
             </RegistrationCard>
-            <Link to="/login"><Button>Login</Button></Link>
         </div>
     );
 }

@@ -36,10 +36,9 @@ export default function Task(props) {
             <div className="task" style={{
                 textDecoration: props.completed ? 'line-through' : 'none'
             }}>
-                <input type="checkbox" defaultChecked={props.completed} onChange={(e) => props.onClick(props.text)} />
-                {props.text}
-                <button type="button" className="close" onClick={(e) => props.onEdit()}>EDIT</button>
-                <button type="button" className="close" onClick={(e) => props.onDelete()}>&times;</button>
+                <span className="task-checkbox"><input type="checkbox" defaultChecked={props.completed} onChange={(e) => props.onClick(props.text)} /></span>
+                <span className="task-text" onClick={(e) => props.onEdit()}>{props.text}</span>
+                <button type="button" className="close task-edit" onClick={(e) => props.onDelete()}>&times;</button>
             </div>
         );
 

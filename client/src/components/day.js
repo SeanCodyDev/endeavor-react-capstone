@@ -56,7 +56,7 @@ export class Day extends React.Component {
 
         return (
             <div className="day">
-                <h3>{title}</h3>
+                <h3 className="date-title">{title}</h3>
                 <ul className="lists">
                     {lists}
                     {/*<li className="add-list-wrapper">

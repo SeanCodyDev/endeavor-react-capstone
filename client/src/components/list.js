@@ -43,7 +43,7 @@ export class List extends React.Component {
         );
         return (
             <div>
-                <h3>{this.props.title}</h3>
+                <h3 className="list-title">{this.props.title}</h3>
                 <ul className="list">
                     {tasks}
                     <li>

@@ -6,8 +6,8 @@ const StyledCard = styled.div`
   border-radius: 5px
   background-color: white;
   padding: 15px;
-  margin-left: 25%;
-  width: 50%;
+  margin: auto;
+  width: 90%;
   text-align: ${props => props.leftAlign ? 'left': 'center'}
 `;
 

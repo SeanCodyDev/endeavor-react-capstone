@@ -1,0 +1,18 @@
+.footer {
+	display: block;
+	background-color: #212121;
+	color: #FFF;
+	margin-top: 30px;
+	text-align: center;
+}
+
+.footer-header {
+	display: block;
+}
+
+.footer-title {
+	color:#FFF;
+	display:block;
+	float:none;
+	padding-top: 20px;
+}

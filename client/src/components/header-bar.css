@@ -1,12 +1,33 @@
-        
+
 .header {
     background-color: #FFFFFF;
     font-family: 'Montserrat', sans-serif;
 
 }
 
-.brand {
+.navbar-brand {
     font-size: 22px;
-    color: #000;
+    font-weight: bold;
 }
 
+.navbar * {
+    color: #000 !important;
+
+}
+
+.navbar-text {
+    
+}
+
+@media (min-width: 768px) {
+    .navbar-text {
+        margin-left: 20vw;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-text {
+        margin-left: 28vw;
+    }
+
+}

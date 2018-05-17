@@ -52,7 +52,9 @@ export class RegistrationForm extends React.Component {
 
                     <Button
                         type="submit"
-                        disabled={this.props.pristine || this.props.submitting}>
+                        disabled={this.props.pristine || this.props.submitting}
+                        background="#E0E0E0"
+                        padding="10px 20px">
                         Register
                     </Button>
                 </form>

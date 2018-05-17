@@ -31,3 +31,22 @@
 .board .add-form {
     align-self: flex-start;
 }
+
+.add-click, .cancel-button {
+    background: #FFF;
+    font-size: 1em;
+    margin: .5em;
+    padding: 8px;
+    border-radius: 3px;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: bold;
+    width: auto;
+    color: #000;
+    cursor: pointer;
+    width: 42%;
+}
+
+.task-input {
+    width: 100%;
+    border-radius: 3px;
+}

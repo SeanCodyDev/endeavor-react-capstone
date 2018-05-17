@@ -22,6 +22,8 @@ export function LandingPage(props) {
                 <StyledCard>
                     <h2>Welcome to Endeavor</h2>
                     <p>You've got things to do. The world isn't waiting. Our simple, yet powerful, tool will help you focus on what matters most.</p>
+                    <br />
+                    <p>Register or Login to get started</p>
                 </StyledCard>
             </Row>
         </div>

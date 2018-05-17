@@ -3,4 +3,26 @@ body {
     margin: 0;
     padding: 0;
     background-color: #F6F6F6;
+    overflow-x: hidden;
   }
+
+.slick-slider{
+	width: 80%;
+	margin: auto;
+
+}
+
+/*@media(min-width: 400px){
+
+	.slick-slider{
+		width: 90%;
+	}
+}*/
+
+.slick-prev:before, .slick-next:before {
+	color: #000 !important;
+}
+
+form input {
+	margin-bottom: 10px;
+}

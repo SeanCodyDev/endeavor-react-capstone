@@ -20,10 +20,14 @@ export function LoginPage(props) {
         border-radius: 5px
         background-color: white;
         padding: 15px;
-        margin-left: 25%;
-        width: 50%;
+        margin: auto;
+        width: 80%;
         text-align: left;
         margin-top: 100px;
+
+      @media (min-width: 768px) {
+        width: 50%;
+      }
     `;
 
     return (
@@ -31,7 +35,6 @@ export function LoginPage(props) {
             <LoginCard>
                 <LoginForm className="login-form" />
             </LoginCard>
-            <Link to="/register"><Button>Register</Button></Link>
         </Row>
     );
 }
