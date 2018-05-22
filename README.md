@@ -12,3 +12,9 @@ Live Demo: [Endeavor](https://endeavor.netlify.com/).
 
 ![Endeavor Screenshot](client/public/images/endeavor-screenshot.png?raw=true)
 
+## Technology
+
+- React/Redux
+- Node.js/Express.js
+- MongoDB
+
