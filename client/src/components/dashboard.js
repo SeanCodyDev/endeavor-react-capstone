@@ -1,7 +1,10 @@
+//import libraries
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import {fetchProtectedData} from '../actions/protected-data';
+
+//import components
 import DynamicSlides from './dynamic-slides';
  
 
@@ -23,15 +26,6 @@ export class Dashboard extends React.Component {
             <div className="dashboard">
                 <br />
                 <DynamicSlides />
-
-                
-                {/* ===== OBSOLETE =====
-                <div className="dashboard-protected-data">
-                    Protected data: {this.props.protectedData}
-                </div>
-                <br />
-                <Link to="/add">Add Entry</Link>
-                */}
             </div>
         );
     }

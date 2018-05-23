@@ -1,15 +1,17 @@
+//import libraries
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
-import Slider from 'react-slick'
-
 import styled from "styled-components";
+
+//import actions
 import {getDays} from '../actions';
 
+//import components
+import Slider from 'react-slick'
 import CalendarNav from './cal-nav';
 import Day from './day';
 import Button from './button';
 import Title from './title';
-// var moment = require('moment');
 
 
 

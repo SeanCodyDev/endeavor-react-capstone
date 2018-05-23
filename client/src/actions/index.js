@@ -1,23 +1,10 @@
-var moment = require('moment');
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
-export const ADD_LIST = 'ADD_LIST';
-export const addList = title => ({
-    type: ADD_LIST,
-    title
-});
+//import libraries
+var moment = require('moment');
 
-export const ADD_TASK = 'ADD_TASK';
-export const addTask = (text, listIndex, dayIndex) => {    
-    return {
-        type: ADD_TASK,
-        text,
-        listIndex,
-        dayIndex
-    }};
-
-
+//saveTask is used for all CRUD requests related to tasks
 export const saveTask = (text, listIndex, dayIndex, date, id, taskIndex, del, completed) => (dispatch, getState) => {
     console.log(text, listIndex, dayIndex, date, id, taskIndex, del, completed);
     const authToken = getState().auth.authToken;
@@ -51,30 +38,19 @@ export const saveTask = (text, listIndex, dayIndex, date, id, taskIndex, del, co
         })   
         .catch(err => {
             console.log(err);
-            // dispatch(fetchProtectedDataError(err));
         });
 };
 
-export const ADD_DAY = 'ADD_DAY';
-export const addDay = (title) => ({
-    type: ADD_DAY,
-    day: {
-        title: title,
-        lists: [{
-            title: 'MORNING',
-            tasks: []
-        }, {
-            title: 'AFTERNOON',
-            tasks: []
-        }, {
-            title: 'NIGHT',
-            tasks: []
-        }]
-    }
- 
-});
+//Actions for mmodifying the state
 
-
+export const ADD_TASK = 'ADD_TASK';
+export const addTask = (text, listIndex, dayIndex) => {    
+    return {
+        type: ADD_TASK,
+        text,
+        listIndex,
+        dayIndex
+    }};
 
 export const COMPLETE_TASK = 'COMPLETE_TASK';
 export const completeTask = (dayIndex, listIndex, taskIndex) => ({
@@ -112,27 +88,6 @@ export const updateTask = (text, dayIndex, listIndex, taskIndex) => {
         taskIndex
     }};
 
-// export const updateTaskToCollection = (text, dayIndex, listIndex, taskIndex, id) => (dispatch, getState) => {
-//     const authToken = getState().auth.authToken;
-//     console.log('eraseTask called');
-//     return fetch(`${API_BASE_URL}/updateTask`, {
-//         method: 'POST',
-//         body: JSON.stringify({text: text, listIndex: listIndex, dayIndex: dayIndex, taskIndex: taskIndex, id: id}),
-//         headers: {
-//             // Provide our auth token as credentials
-//             Authorization: `Bearer ${authToken}`,
-//             'Accept': 'application/json, text/plain, */*',
-//             'Content-Type': 'application/json'
-//         }
-//     })
-//         .then(res => normalizeResponseErrors(res))
-//         .then(res => res.json())
-//         .then(({data}) => dispatch(updateTask(text, dayIndex, listIndex, taskIndex)))
-//         .catch(err => {
-//             console.log(err);
-//             // dispatch(fetchProtectedDataError(err));
-//         });
-// };
 
 export const GET_CALENDAR = 'GET_CALENDAR';
 export const getCalendar = (days, props, num, period) => {
@@ -167,8 +122,6 @@ export const getDays = (props, num, period) => (dispatch, getState) => {
             // dispatch(fetchProtectedDataError(err));
         });
 };
-
-
 
 function createArrayOfDays(startOfCurrentWeek, daysArray){
 if (daysArray.length === 0) {
@@ -205,7 +158,6 @@ for (let i=0; i<7; i++) {
     }
 }
 
-// console.log('newDaysArray:', newDaysArray)
 console.log('finalDaysArray:', finalDaysArray)
 return finalDaysArray.days;
 }

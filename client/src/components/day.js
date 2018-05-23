@@ -1,7 +1,6 @@
+//import libraries
 import React from 'react';
 import {connect} from 'react-redux';
-
-//import libraries
 var moment = require('moment');
 
 //import components

@@ -1,3 +1,4 @@
+//import libraries
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
@@ -10,6 +11,7 @@ import Row from './row';
 import ListItem from './list-item'
 import NavList from './nav-list';
 
+//import styles
 import './footer.css';
 
 

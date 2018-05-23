@@ -1,6 +1,4 @@
 .lists {
-/*    display: flex;
-    align-items: flex-start;*/
     padding-left: 0;
 }
 
@@ -11,14 +9,6 @@
     border-radius: 4px;
     margin-bottom: 10px;
 }
-
-/*.list-wrapper:first-child {
-    margin-left: 0;
-}
-
-.list-wrapper:last-child {
-    margin-right: 0;
-}*/
 
 .day {
 	margin: 10px;
