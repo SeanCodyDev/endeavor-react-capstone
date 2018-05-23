@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import styled from "styled-components";
-import {getCalendar, getDays} from '../actions';
+import {getDays} from '../actions';
 import Button from './button';
 import Title from './title';
 

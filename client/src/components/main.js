@@ -8,7 +8,6 @@ import styled from "styled-components";
 import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
 import Dashboard from './dashboard';
-import Add from './Add';
 import RegistrationPage from './registration-page';
 import DynamicSlides from './dynamic-slides';
 import Row from './row';
@@ -36,7 +35,6 @@ export class Main extends React.Component {
                     <Route exact path = "/login" component={LoginPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/register" component={RegistrationPage} />
-                    <Route exact path="/add" component={Add} />
             </MainDiv>
         );
     }

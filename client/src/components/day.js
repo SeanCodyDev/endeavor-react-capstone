@@ -1,20 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
+
+//import libraries
 var moment = require('moment');
 
-
+//import components
 import List from './list';
 
-import {addList, addDay, addTask, completeTask, deleteTask, editTask, updateTask, saveTask, eraseTask, updateTaskToCollection} from '../actions';
+//import actions
+import {addTask, completeTask, deleteTask, editTask, updateTask, saveTask, eraseTask} from '../actions';
 
 export class Day extends React.Component {
-    addList(title) {
-        this.props.dispatch(addList(title));
-    }
-
-    addDay(){
-        this.props.dispatch(addDay());
-    }
 
     addTask(text, listIndex) {
         console.log(this);
@@ -59,12 +55,6 @@ export class Day extends React.Component {
                 <h3 className="date-title">{title}</h3>
                 <ul className="lists">
                     {lists}
-                    {/*<li className="add-list-wrapper">
-                        <AddForm
-                            type="list"
-                            onAdd={title => this.addList(title)}
-                        />
-                    </li>*/}
                 </ul>
             </div>
         );

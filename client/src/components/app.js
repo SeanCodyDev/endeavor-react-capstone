@@ -5,7 +5,6 @@ import {Route, withRouter} from 'react-router-dom';
 import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
 import Dashboard from './dashboard';
-import Add from './Add';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
 import DynamicSlides from './dynamic-slides';
