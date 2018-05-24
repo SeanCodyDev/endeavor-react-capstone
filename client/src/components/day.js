@@ -9,6 +9,9 @@ import List from './list';
 //import actions
 import {editTask, saveTask} from '../actions';
 
+//import styles
+import './day.css';
+
 export class Day extends React.Component {
 
     addTask(text, listIndex) {
