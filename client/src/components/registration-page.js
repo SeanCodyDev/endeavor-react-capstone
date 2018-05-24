@@ -1,10 +1,11 @@
+//import libraries
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import styled from "styled-components";
 
+//import components
 import RegistrationForm from './registration-form';
-import Button from './button';
 
 export function RegistrationPage(props) {
     // If we are logged in (which happens automatically when registration

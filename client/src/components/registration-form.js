@@ -1,11 +1,16 @@
+//import libraries
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
+
+//import actions
 import {registerUser} from '../actions/users';
 import {login} from '../actions/auth';
-import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
-import styled from "styled-components";
+
+//import components
 import Button from './button';
+import Input from './input';
+
 
 export class RegistrationForm extends React.Component {
     onSubmit(values) {

@@ -8,7 +8,6 @@ import {getDays} from '../actions';
 
 //import components
 import Button from './button';
-import Title from './title';
 
 
 export class CalendarNav extends Component {

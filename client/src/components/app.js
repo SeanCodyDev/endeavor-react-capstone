@@ -1,15 +1,11 @@
 //import libraries
 import React from 'react';
 import {connect} from 'react-redux';
-import {Route, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 //import components
 import HeaderBar from './header-bar';
-import LandingPage from './landing-page';
-import Dashboard from './dashboard';
-import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
-import DynamicSlides from './dynamic-slides';
 import Main from './main';
 import Footer from './footer';
 

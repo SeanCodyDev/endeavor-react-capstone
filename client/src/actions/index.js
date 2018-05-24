@@ -4,43 +4,6 @@ import {normalizeResponseErrors} from './utils';
 //import libraries
 var moment = require('moment');
 
-//saveTask is used for all CRUD requests related to tasks
-export const saveTask = (text, listIndex, dayIndex, date, id, taskIndex, del, completed) => (dispatch, getState) => {
-    console.log(text, listIndex, dayIndex, date, id, taskIndex, del, completed);
-    const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/saveTask`, {
-        method: 'POST',
-        body: JSON.stringify({text: text, listIndex: listIndex, date: date, id: id, taskIndex: taskIndex, del: del, completed: completed}),
-        headers: {
-            // Provide our auth token as credentials
-            Authorization: `Bearer ${authToken}`,
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(res => normalizeResponseErrors(res))
-        .then(res => res.json())
-        .then((data) => {
-            if (!taskIndex && taskIndex != 0) {
-                dispatch(addTask(text, listIndex, dayIndex))
-                
-            } else if(!del) {
-                if (!completed) {
-                    dispatch(updateTask(text, dayIndex, listIndex, taskIndex))
-                } else {
-
-                    dispatch(completeTask(dayIndex, listIndex, taskIndex))
-                }
-
-            } else {
-                dispatch(deleteTask(dayIndex, listIndex, taskIndex))
-            }
-        })   
-        .catch(err => {
-            console.log(err);
-        });
-};
-
 //Actions for mmodifying the state
 
 export const ADD_TASK = 'ADD_TASK';
@@ -88,6 +51,42 @@ export const updateTask = (text, dayIndex, listIndex, taskIndex) => {
         taskIndex
     }};
 
+//saveTask is used for all CRUD requests related to tasks
+export const saveTask = (text, listIndex, dayIndex, date, id, taskIndex, del, completed) => (dispatch, getState) => {
+    console.log(text, listIndex, dayIndex, date, id, taskIndex, del, completed);
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/saveTask`, {
+        method: 'POST',
+        body: JSON.stringify({text: text, listIndex: listIndex, date: date, id: id, taskIndex: taskIndex, del: del, completed: completed}),
+        headers: {
+            // Provide our auth token as credentials
+            Authorization: `Bearer ${authToken}`,
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then((data) => {
+            if (!taskIndex && taskIndex !== 0) {
+                dispatch(addTask(text, listIndex, dayIndex))
+                
+            } else if(!del) {
+                if (!completed) {
+                    dispatch(updateTask(text, dayIndex, listIndex, taskIndex))
+                } else {
+
+                    dispatch(completeTask(dayIndex, listIndex, taskIndex))
+                }
+
+            } else {
+                dispatch(deleteTask(dayIndex, listIndex, taskIndex))
+            }
+        })   
+        .catch(err => {
+            console.log(err);
+        });
+};
 
 export const GET_CALENDAR = 'GET_CALENDAR';
 export const getCalendar = (days, props, num, period) => {

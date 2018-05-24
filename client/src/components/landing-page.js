@@ -1,7 +1,7 @@
+//import libraries
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
-import styled from "styled-components";
+import {Redirect} from 'react-router-dom';
 
 //import components
 import Row from './row';
@@ -16,7 +16,7 @@ export function LandingPage(props) {
     return (
         <div>
             <Row>
-                <img width="100%" src="../images/landing-img-copy.jpg" />
+                <img width="100%" src="../images/landing-img-copy.jpg" alt="working desk" />
             </Row>
             <Row>
                 <StyledCard>

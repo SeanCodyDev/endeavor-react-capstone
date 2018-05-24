@@ -1,7 +1,6 @@
 //import libraries
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
-import styled from "styled-components";
 
 //import actions
 import {getDays} from '../actions';
@@ -10,9 +9,6 @@ import {getDays} from '../actions';
 import Slider from 'react-slick'
 import CalendarNav from './cal-nav';
 import Day from './day';
-import Button from './button';
-import Title from './title';
-
 
 
 

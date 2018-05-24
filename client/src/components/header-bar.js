@@ -1,18 +1,12 @@
+//import libraries
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+
+//import actions
 import {setCurrentUser, setAuthToken} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
-import styled from "styled-components";
-
-
-
 
 //import components
-import Title from './title';
-import Button from './button';
-import NavList from './nav-list';
-import ListItem from './list-item'
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 //import styles
@@ -29,14 +23,6 @@ export class HeaderBar extends React.Component {
 
     render() {
 
-
-        // Only render the log out button if we are logged in
-        let logOutButton;
-        if (this.props.loggedIn) {
-            logOutButton = (
-                <Button onClick={() => this.logOut()}>Log out</Button>
-            );
-        }
 
         let welcome;
         if (this.props.loggedIn) {

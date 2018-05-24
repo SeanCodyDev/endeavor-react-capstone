@@ -7,7 +7,7 @@ var moment = require('moment');
 import List from './list';
 
 //import actions
-import {addTask, completeTask, deleteTask, editTask, updateTask, saveTask, eraseTask} from '../actions';
+import {editTask, saveTask} from '../actions';
 
 export class Day extends React.Component {
 

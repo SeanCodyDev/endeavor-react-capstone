@@ -1,12 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import styled from "styled-components";
 
 
 //import components
 import LoginForm from './login-form';
-import Button from './button';
 import Row from './row';
 
 export function LoginPage(props) {

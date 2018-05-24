@@ -1,15 +1,12 @@
 //import libraries
-import React, { Component } from 'react'
-import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import React from 'react'
+import {Link} from 'react-router-dom';
 import styled from "styled-components";
 
 //import components
-import Title from './title';
 import Button from './button';
 import Row from './row';
 import ListItem from './list-item'
-import NavList from './nav-list';
 
 //import styles
 import './footer.css';
@@ -31,11 +28,11 @@ export default function Footer(props) {
 	    		<h2 className="footer-title">Endeavor</h2>
 		    </Row>
 		    <Row>
-		    	<NavList paddingLeft='0'>
+		    	<ul>
 		    		<ListItem float='none'><Link to="/"><Button color='#FFF' background='#212121' padding="10px 20px">Home</Button></Link></ListItem>
 			        <ListItem float='none'><Link to="/"><Button color='#FFF' background='#212121' padding="10px 20px">Privacy</Button></Link></ListItem> 
 			        <ListItem float='none'><Link to="/"><Button color='#FFF' background='#212121' padding="10px 20px">Terms</Button></Link></ListItem>
-		        </NavList>
+		        </ul>
 		    </Row>
     	</FooterWrapper>
 

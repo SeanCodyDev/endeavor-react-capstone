@@ -1,10 +1,14 @@
+//import libraries
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
-import Input from './input';
+
+//import actions
 import {login} from '../actions/auth';
 import {required, nonEmpty} from '../validators';
-import styled from "styled-components";
+
+//import components
 import Button from './button';
+import Input from './input';
 
 
 export class LoginForm extends React.Component {
