@@ -39,7 +39,7 @@ export class LoginForm extends React.Component {
                         this.onSubmit(values)
                     )}>
                     {error}
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Email (Demo: "1@2.com")</label>
                     <Field
                         component={Input}
                         type="text"
@@ -47,7 +47,7 @@ export class LoginForm extends React.Component {
                         id="email"
                         validate={[required, nonEmpty]}
                     />
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Password (Demo: "abcd")</label>
                     <Field
                         component={Input}
                         type="password"
